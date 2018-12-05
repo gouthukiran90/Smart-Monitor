@@ -423,6 +423,8 @@ public class HomeActivity extends BaseActivity
 
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
+        if (mediaController == null)
+            return false;
         if (mediaController.isShowing())
             mediaController.hide();
         else mediaController.show(4000);
