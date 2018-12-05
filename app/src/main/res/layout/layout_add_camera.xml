@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/dimen_16"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimen_8"
+        android:fontFamily="sans-serif"
+        android:text="Select Camera At :"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dimen_20" />
+
+    <RadioGroup
+        android:id="@+id/radioGrpToAdCamera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/rBtnCamBedRoom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_4"
+            android:text="Bed Room" />
+
+
+        <RadioButton
+            android:id="@+id/rBtnCamDen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_4"
+            android:text="Hall" />
+
+
+        <RadioButton
+            android:id="@+id/rBtnCamBasement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_4"
+            android:text="Basement" />
+
+        <RadioButton
+            android:id="@+id/rBtnCamFamilyRoom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_4"
+            android:text="Family Room" />
+
+        <RadioButton
+            android:id="@+id/rBtnCamCourtYard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_4"
+            android:text="Court Yard" />
+
+        <RadioButton
+            android:id="@+id/rBtnCamFrontDoor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_4"
+            android:text="Front Door" />
+
+        <RadioButton
+            android:id="@+id/rBtnCamGarag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_4"
+            android:text="Garag" />
+    </RadioGroup>
+
+</LinearLayout>

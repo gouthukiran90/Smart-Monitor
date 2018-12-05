@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="colorPrimary">#0065FD</color>
+    <color name="colorPrimaryDark">#0050fd</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="white">#ffffff</color>
+
+    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="windowBackground">#FFFFFF</color>
+    <color name="navigationBarColor">#000000</color>
+    <color name="search_layover_bg">#50000000</color>
+    <!-- <color name="colorAccent">#c8e8ff</color>
+-->
+<!--9BA0A3-->
+    <!--explicitly used colors-->
+    <color name="black">#000000</color>
+    <color name="app_red_color">#FA5F5F</color>
+    <color name="linkedin_color">#008cc9</color>
+    <color name="fb_blue_color">#4967A9</color>
+    <color name="thick_blue_color">#304471</color>
+    <color name="fade_fb_blue_color">#804967A9</color>
+    <color name="gplus_color">#E53935</color>
+    <color name="gray_for_hint">#D1CCCD</color>
+    <color name="light_gray_text_bg">#F2F2F2</color>
+    <color name="dark_gray_for_seperator">#9b9999</color>
+    <color name="gray_text_color">#818181</color>
+    <color name="login_image_grey_light">#7a7b7b</color>
+    <color name="login_image_grey_dark">#494949</color>
+    <color name="card_background">#f8f8f8</color>
+    <color name="statusBarColor">#b00429</color>
+    <color name="orange">#faab0c</color>
+    <color name="ask_pending_item_bg">#ffeef4ff</color>
+    <color name="asdf">#9f90af</color>
+    <color name="drawerArrowColor">#ffffff</color>
+    <color name="appLockPrimary">#263237</color>
+    <color name="appLockPrimaryDark">#1e282d</color>
+    <color name="app_lock_heading_txt_color">#5cdeda</color>
+    <!--  <color name="green">#12a119</color>-->
+    <color name="green">#409140</color>
+    <color name="dialog_green">#009688</color>
+    <color name="google_play_green">#ff689f38</color>
+    <color name="fade_google_play_green">#30689f38</color>
+    <color name="fade_blue_color">#E4EFFA</color>
+
+    <color name="fade_app_red">#30FA5F5F</color>
+    <color name="etHintColor">#333333</color>
+    <color name="menu_background">#e6e6e6</color>
+<color name="aseedf">#ede971</color>
+    <!--ripple_lightgray effect colors-->
+    <color name="ripple_effect_color">#c5c4c4</color>
+    <!--end of ripple_lightgray effect colors-->
+
+    <!--RetailerAskType  colors-->
+
+    <!-- /////////////////////////////////////bottom_nav_bar////////////////////////////-->
+    <!-- default ripple color for shifting items -->
+    <color name="bbn_shifting_item_ripple_color">#33FFFFFF</color>
+
+    <!-- default ripple color for fixed items -->
+    <color name="bbn_fixed_item_ripple_color">#33000000</color>
+
+    <!-- fixed item inactive color (only alpha will be used) -->
+    <color name="bbn_item_shifting_color_inactive">#99000000</color>
+
+    <color name="bbn_topShadowEndColor">#AA000000</color>
+    <color name="bbn_topShadowCenterColor">#66000000</color>
+
+    <!--ask types color-->
+    <color name="ask_dnd_color">#DF0E37</color>
+    <color name="ask_qty_change_color">#2F6EA5</color>
+    <color name="ask_start_deliver_color">#5CC0DE</color>
+
+
+    <color name="ask_subsc_change_color">#2F6EA5</color>
+    <color name="ask_special_order_color">#409140</color>
+    <color name="ask_concern_color">#F0AD4F</color>
+
+    <color name="cardview_layout_bg">#ffeeeeee</color>
+
+
+    <!-- /////////////////////////////////////bottom_nav_bar////////////////////////////-->
+</resources>

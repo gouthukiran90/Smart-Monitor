@@ -1,0 +1,131 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <ListPreference
+        android:defaultValue="@string/camera_1"
+        android:entries="@array/pref_camera_name_titles"
+        android:entryValues="@array/pref_camera_name_titles"
+        android:key="camera_name_list"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:summary="edit name"
+        android:title="@string/camera_1" />
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="camera_switch"
+        android:title="Camera On/Off" />
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="record_audio_switch"
+        android:title="Record Audio" />
+
+    <PreferenceScreen
+        android:key="notifications"
+        android:title="Notifications">
+
+        <Preference android:summary="@string/notification_event_type_summary" />
+        <PreferenceCategory android:title="Event types">
+            <SwitchPreference
+                android:defaultValue="false"
+                android:key="person_detected"
+                android:summary="Cloud Cam plan required"
+                android:title="Person Detected" />
+            <SwitchPreference
+                android:defaultValue="true"
+                android:key="motion_detected"
+                android:title="Motion Detected" />
+        </PreferenceCategory>
+
+        <PreferenceCategory android:title="Frequency">
+            <Preference android:summary="@string/notification_frequency_summary" />
+
+            <ListPreference
+                android:defaultValue="-1"
+                android:entries="@array/pref_notification_frequency_titles"
+                android:entryValues="@array/pref_notification_frequency_values"
+                android:key="notification_frequency_list"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/pref_title_notification_frequency" />
+        </PreferenceCategory>
+    </PreferenceScreen>
+
+    <Preference android:title="Change Wi-Fi network">
+        <intent android:action="android.settings.WIFI_SETTINGS" />
+    </Preference>
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="home_or_away_switch"
+        android:summary="You can set your camera to automatically turn off when your phone is in the same location as your camera"
+        android:title="Home/Away" />
+
+    <Preference
+        android:summary="Schedule your cameras"
+        android:title="Schedule">
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="com.example.videodemo.ScheduleActivity"
+            android:targetPackage="com.example.videodemo" />
+
+    </Preference>
+    <PreferenceScreen
+        android:key="motion_sensitivity"
+        android:title="Motion Sensitivity">
+        <Preference android:summary="The sensitivity setting determines the amount of motions required to start a recording" />
+
+        <ListPreference
+            android:defaultValue="Person-sized object upto 20ft away"
+            android:entries="@array/motion_sens_titles"
+            android:entryValues="@array/motion_sens_titles_descs"
+            android:key="motion_sensitivity_list"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:summary="edit name"
+            android:title="High" />
+    </PreferenceScreen>
+
+    <!-- NOTE: EditTextPreference accepts EditText attributes. -->
+    <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
+
+    <!-- <EditTextPreference
+         android:capitalize="words"
+         android:defaultValue="@string/pref_default_display_name"
+         android:inputType="textCapWords"
+         android:key="example_text"
+         android:maxLines="1"
+         android:selectAllOnFocus="true"
+         android:singleLine="true"
+         android:title="@string/pref_title_display_name" />
+
+     &lt;!&ndash; NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to
+          dismiss it. &ndash;&gt; -->
+    <PreferenceScreen
+        android:key="night_vision_pref"
+        android:title="Night Vision">
+        <Preference android:summary="@string/night_vision_summary" />
+
+        <ListPreference
+            android:entries="@array/night_vision_list_titles"
+            android:entryValues="@array/night_vision_titles_descs"
+            android:key="night_vision_list_pref"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null" />
+
+    </PreferenceScreen>
+
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="rotate_video_switch"
+        android:title="Rotate Video" />
+
+
+    <!--<PreferenceScreen-->
+    <!--android:title="Camera Details">-->
+
+    <!--</PreferenceScreen>-->
+
+</PreferenceScreen>

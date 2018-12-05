@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_sign_up">
+
+    <FrameLayout
+        android:id="@+id/frame_layout_at_signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:background="@color/fade_blue_color"
+        android:visibility="gone">
+
+    </FrameLayout>
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/nested_scroll_at_signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+     <RelativeLayout
+         android:layout_width="match_parent"
+         android:animateLayoutChanges="true"
+         android:layout_height="wrap_content">
+
+
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardViewAtSignup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="140dp"
+            android:layout_marginLeft="@dimen/dimen_15"
+            android:layout_marginRight="@dimen/dimen_15"
+            android:background="@color/white"
+            app:contentPadding="@dimen/dimen_10"
+            android:backgroundTint="@color/white"
+            android:padding="@dimen/dimen_5"
+            app:cardCornerRadius="@dimen/dimen_20"
+            app:cardUseCompatPadding="true" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dimen_15"
+            android:layout_marginBottom="@dimen/dimen_15"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/dimen_5"
+                    android:layout_marginRight="@dimen/dimen_5"
+                    app:srcCompat="@drawable/ic_person_grey_tiny" />
+
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/et_fname_at_signup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords"
+                        android:maxLines="1"
+                        android:drawablePadding="@dimen/dimen_10"
+                         android:hint="@string/firstName"
+                        android:paddingBottom="@dimen/dimen_15"
+                         android:textSize="@dimen/text_size_small"
+                        android:singleLine="true"
+                        app:theme="@style/AppTheme.ActionBarTheme" />
+             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/dimen_5"
+                    android:layout_marginRight="@dimen/dimen_5"
+                    app:srcCompat="@drawable/ic_person_grey_tiny" />
+
+
+
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/et_lname_at_signup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords"
+                        android:maxLines="1"
+                        android:drawablePadding="@dimen/dimen_10"
+                         android:hint="@string/lastName"
+                        android:paddingBottom="@dimen/dimen_15"
+                        android:textSize="@dimen/text_size_small"
+                        android:singleLine="true"
+                        app:theme="@style/AppTheme.ActionBarTheme" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/dimen_5"
+                    android:layout_marginRight="@dimen/dimen_5"
+                    app:srcCompat="@drawable/ic_lock_open_grey_tiny" />
+
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/et_pwd_at_signup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/dimen_10"
+                         android:drawableRight="@drawable/ic_visibility_grey"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:paddingBottom="@dimen/dimen_15"
+                        android:textSize="@dimen/text_size_small"
+                        android:singleLine="true"
+                        android:hint="@string/password"
+                        app:theme="@style/AppTheme.ActionBarTheme" />
+
+                   <!-- <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/dimen_5"
+                        android:gravity="right"
+                        android:text="@string/password_info"
+                        android:textColor="@color/app_red_color"
+                        android:textSize="@dimen/text_size_tiny" />
+                </LinearLayout>-->
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+               <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/dimen_5"
+                    android:layout_marginRight="@dimen/dimen_5"
+                    app:srcCompat="@drawable/ic_lock_open_grey_tiny" />
+
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/et_confirm_pwd_at_signup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                         android:drawablePadding="@dimen/dimen_10"
+                        android:hint="@string/confirm_pwd"
+                        android:textSize="@dimen/text_size_small"
+                        android:paddingBottom="@dimen/dimen_15"
+                        android:singleLine="true"
+                        app:theme="@style/AppTheme.ActionBarTheme" />
+
+                <!--</LinearLayout>-->
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/dimen_5"
+                    android:layout_marginRight="@dimen/dimen_5"
+                    app:srcCompat="@drawable/ic_email_grey" />
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/et_email_at_signup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz@.0123456789"
+                        android:imeOptions="actionNext"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                         android:drawablePadding="@dimen/dimen_10"
+                        android:hint="@string/email"
+                        android:textSize="@dimen/text_size_small"
+                        android:paddingBottom="@dimen/dimen_15"
+                        android:singleLine="true"
+                        app:theme="@style/AppTheme.ActionBarTheme" />
+
+                <!--</LinearLayout>-->
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/dimen_5"
+                    android:layout_marginRight="@dimen/dimen_5"
+                    app:srcCompat="@drawable/ic_call_grey_tiny" />
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/et_mobile_at_signup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/dimen_1"
+                        android:imeOptions="actionDone"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:maxLines="1"
+                         android:drawablePadding="@dimen/dimen_10"
+                        android:hint="@string/mobileNumber"
+                        android:textSize="@dimen/text_size_small"
+                        android:paddingBottom="@dimen/dimen_15"
+                        android:singleLine="true"
+                        app:theme="@style/AppTheme.ActionBarTheme" />
+                <!--</LinearLayout>-->
+            </LinearLayout>
+
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_60"
+                android:layout_marginRight="@dimen/dimen_60"
+                android:layout_marginTop="@dimen/dimen_10">
+
+
+                <ProgressBar
+                    android:id="@+id/progressWheelForSignUpBtn"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:visibility="gone"  />
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/submitBtnAtSignUp"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:theme="@style/Primary.Button"
+                     android:text="@string/sign_up"
+                    android:textSize="@dimen/text_size_moderate"
+                    android:visibility="visible" />
+            </FrameLayout>
+
+        </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+     </RelativeLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+</RelativeLayout>

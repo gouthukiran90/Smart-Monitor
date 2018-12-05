@@ -1,0 +1,182 @@
+<resources>
+    <string name="app_name">Smart Monitor</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">Password must be 4 characters at least</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="email"> Email</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Register</string>
+    <string name="password">Password</string>
+    <string name="firstName">First Name</string>
+    <string name="lastName">Last Name</string>
+    <string name="mobileNumber">Mobile Number</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="camera_1">Bedroom</string>
+    <string name="title_activity_dash_board">DashBoardActivity</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="action_example">Example action</string>
+    <string name="confirm_pwd">confirm password</string>
+    <string name="noAccntTxt">Don\'t have an account?</string>
+
+
+    <string name="error_txt_for_no_fname">Please enter First name with at least 3 characters</string>
+    <string name="error_txt_for_no_lname">Please enter Last name</string>
+    <string name="error_txt_for_no_signup_pwd">Please enter your desired password</string>
+    <string name="error_txt_for_no_confirm_pwd">Please confirm the password</string>
+    <string name="error_txt_for_min_length_pwd">Password length must be > 5 characters</string>
+    <string name="error_txt_for_no_matched_pwd">Password didn\'t match with Confirm password</string>
+    <string name="error_txt_for_no_signin_pwd">Please enter your login password</string>
+    <string name="error_txt_for_no_email">Please enter valid Email Id</string>
+    <string name="error_txt_for_no_mobilenuber">Please enter valid 10 digit Mobile number</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example Camera settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_social_recommendations">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations">Recommendations for people to contact
+        based on your message history
+    </string>
+    <string name="notification_event_type_summary">Notifications will be sent when your camera detects the following event types. Your camera will continue to record when notifications are disabled.</string>
+    <string name="notification_frequency_summary">How often would you like to receive notifications?</string>
+
+    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string name="google_annotation_url">https://videointelligence.googleapis.com/v1/videos:annotate?key=%1$s</string>
+    <string name="google_video_operations_api">https://videointelligence.googleapis.com/v1/operations/%1$s?key=%2$s</string>
+
+    <string name="google_cloud_api_key">AIzaSyBUfn4mGWfX_62N-cH4pTo7YFCztiXEGqY</string>
+    <string-array name="pref_example_list_titles">
+        <item>Always</item>
+        <item>When possible</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <string-array name="days">
+        <item>S</item>
+        <item>M</item>
+        <item>T</item>
+        <item>W</item>
+        <item>T</item>
+        <item>F</item>
+        <item>S</item>
+    </string-array>
+    <string-array name="pref_camera_name_titles">
+        <item>Bedroom</item>
+        <item>Back Door</item>
+        <item>Basement</item>
+        <item>Den</item>
+        <item>Dining Room</item>
+        <item>Family Room</item>
+        <item>Front Door</item>
+        <item>Garage</item>
+    </string-array>
+
+
+    <string-array name="motion_sens_titles">
+        <item>High</item>
+        <item>Medium</item>
+        <item>Low</item>
+        <item>Disabled</item>
+    </string-array>
+
+    <string-array name="motion_sens_titles_descs">
+        <item>Person-sized object upto 20ft away</item>
+        <item>Person-sized object upto 10ft away</item>
+        <item>Person-sized object upto 5ft away</item>
+        <item>By disabling, no motion will be detected.</item>
+    </string-array>
+
+    <string-array name="night_vision_list_titles">
+        <item>Default</item>
+        <item>Turn off night vision lights</item>
+    </string-array>
+
+    <string-array name="night_vision_titles_descs">
+        <item>Use default night vision settings</item>
+        <item>Do not use lights to optimize night vision settings</item>
+    </string-array>
+    <string name="night_vision_summary">Night vision helps you see what\'s happening in dark environment. Note that changing default night vision video settings may affect image quality and detection accuracy.</string>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Data &amp; sync</string>
+
+
+    <string name="pref_title_notification_frequency">Notifications frequency</string>
+
+    <string-array name="pref_notification_frequency_titles">
+        <item>Every time an event occurs</item>
+        <item>Every 10 minutes</item>
+        <item>Every 20 minutes</item>
+        <item>Every 30 minutes</item>
+        <item>Hourly</item>
+    </string-array>
+    <string-array name="pref_notification_frequency_values">
+        <item>-1</item>
+        <item>10</item>
+        <item>20</item>
+        <item>30</item>
+        <item>60</item>
+    </string-array>
+
+    <string-array name="list_preference_entries">
+        <item>Entry 1</item>
+        <item>Entry 2</item>
+        <item>Entry 3</item>
+    </string-array>
+
+    <string-array name="list_preference_entry_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="multi_select_list_preference_default_value" />
+
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_new_message_notifications">New message notifications</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="pref_title_vibrate">Vibrate</string>
+    <string name="title_activity_schedule">ScheduleActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_schedule_title">Add Schedule</string>
+    <string name="schedule_title">Schedule</string>
+
+</resources>

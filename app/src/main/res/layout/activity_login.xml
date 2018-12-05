@@ -1,0 +1,260 @@
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatelayoutAtSignIn"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fade_blue_color"
+    tools:context=".LoginActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_bar_height"
+        android:background="@drawable/toolbar_gradinet_primary_color"
+        android:fitsSystemWindows="true"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:toolbarId="@+id/toolbar">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutParentAtSignin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_anchor="@id/app_bar"
+        app:layout_anchorGravity="bottom|end">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/imgAtSignUp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/dimen_40"
+            android:layout_marginTop="@dimen/dimen_30"
+            app:srcCompat="@drawable/ic_profile_avatar" />
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginEnd="@dimen/dimen_10"
+            android:layout_marginLeft="@dimen/dimen_10"
+            android:layout_marginRight="@dimen/dimen_10"
+            android:layout_marginStart="@dimen/dimen_10"
+            android:layout_marginTop="@dimen/dimen_20"
+            android:backgroundTint="@color/white"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/dimen_20"
+            app:cardUseCompatPadding="true"
+            app:contentPadding="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="@dimen/dimen_5"
+                        app:srcCompat="@drawable/ic_person_grey_tiny" />
+                    <!--
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical">
+
+                                            <android.support.v7.widget.AppCompatTextView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="@dimen/dimen_3"
+                                                android:layout_marginStart="@dimen/dimen_3"
+                                                android:layout_marginTop="@dimen/dimen_5"
+                                                android:text="@string/email"
+                                                android:textColor="@color/login_image_grey_dark"
+                                                android:textSize="@dimen/text_size_ultrasmall" />
+                    -->
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/etForUnameAtSignin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/email"
+                        android:imeOptions="actionNext"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                        android:paddingBottom="@dimen/dimen_15"
+                        android:singleLine="true"
+                        android:textSize="@dimen/text_size_small"
+                        app:theme="@style/AppTheme.ActionBarTheme" />
+                    <!--</LinearLayout>-->
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="@dimen/dimen_5"
+                        app:srcCompat="@drawable/ic_lock_open_grey_tiny" />
+
+                    <!--
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical">
+
+                                            <android.support.v7.widget.AppCompatTextView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="@dimen/dimen_3"
+                                                android:layout_marginStart="@dimen/dimen_3"
+                                                android:layout_marginTop="@dimen/dimen_5"
+                                                android:text="@string/password"
+                                                android:textColor="@color/login_image_grey_dark"
+                                                android:textSize="@dimen/text_size_ultrasmall" />
+                    -->
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/etForPwdAtSignIn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableRight="@drawable/ic_visibility_grey"
+                        android:hint="@string/password"
+                        android:imeOptions="actionDone"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:paddingBottom="@dimen/dimen_15"
+                        android:singleLine="true"
+                        android:textSize="@dimen/text_size_small"
+                        app:theme="@style/AppTheme.ActionBarTheme" />
+                    <!--</LinearLayout>-->
+                </LinearLayout>
+
+           <!--     <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tvForForgotPwdAtSignin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:gravity="left"
+                    android:text="@string/forgotPwd"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_size_ultrasmall"
+                    android:visibility="gone" />-->
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_60"
+                    android:layout_marginLeft="@dimen/dimen_60"
+                    android:layout_marginRight="@dimen/dimen_60"
+                    android:layout_marginStart="@dimen/dimen_60"
+                    android:layout_marginTop="@dimen/dimen_10">
+
+
+                    <!--<com.prozentech.bestcareers.helpers.ProgressWheel
+                        android:id="@+id/progressWheelForSigninBtn"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center"
+                        android:visibility="gone"
+                        app:matProg_barColor="@color/colorPrimary"
+                        app:matProg_progressIndeterminate="true"
+                        app:matProg_spinSpeed="0.74" />-->
+                    <ProgressBar
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center"
+                        android:visibility="gone"
+                        android:id="@+id/progressWheelForSigninBtn"
+                        />
+
+                    <android.support.v7.widget.AppCompatButton
+                        android:id="@+id/signInBtnAtSignin"
+                        style="@style/Widget.AppCompat.Button.Colored"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/sign_in"
+                        android:textSize="@dimen/text_size_moderate"
+                        android:theme="@style/Primary.Button"
+                        android:visibility="visible" />
+                </FrameLayout>
+
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_15"
+                android:layout_marginStart="@dimen/dimen_15"
+                android:layout_marginTop="@dimen/dimen_30"
+                android:gravity="center_horizontal"
+                android:text="@string/noAccntTxt"
+                android:textColor="@color/login_image_grey_dark"
+                android:textSize="@dimen/text_size_moderate" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tvForSignUpAtSignIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dimen_15"
+                android:layout_marginLeft="@dimen/dimen_5"
+                android:layout_marginRight="@dimen/dimen_15"
+                android:layout_marginStart="@dimen/dimen_5"
+                android:layout_marginTop="@dimen/dimen_30"
+                android:gravity="center_horizontal"
+                android:text="Create Account"
+                android:onClick="goToSignup"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_size_small"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>
+
+
+
+

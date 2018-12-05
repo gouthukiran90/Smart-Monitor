@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/dimen_12">
+
+    <TextView
+        android:id="@+id/tvForScheduleName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:fontFamily="sans-serif"
+        android:inputType="textPersonName"
+        android:text="Schedule 1"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_medium" />
+
+    <ImageView
+        android:id="@+id/imgForPopupMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/dimen_10"
+        app:srcCompat="@drawable/ic_more_vert_black_24dp" />
+
+
+    <TextView
+        android:id="@+id/tvForScheduleTimePeriod"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvForScheduleName"
+        android:layout_marginBottom="@dimen/dimen_5"
+        android:layout_marginTop="@dimen/dimen_8"
+        android:fontFamily="sans-serif"
+        android:inputType="textPersonName"
+        android:text="Schedule 1"
+        android:textSize="@dimen/text_size_small" />
+
+    <Switch
+        android:id="@+id/scheduleSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/tvForScheduleTimePeriod"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/tvForScheduleName" />
+
+    <LinearLayout
+        android:id="@+id/layoutForDays"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/scheduleSwitch"
+        android:gravity="right"
+        android:layout_margin="@dimen/dimen_10"
+        android:orientation="horizontal"></LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/gray_for_hint" />
+
+</RelativeLayout>
