@@ -55,8 +55,9 @@ public class SettingsActivity extends PreferenceActivity {
 //                    .add(android.R.id.content, new GeneralPreferenceFragment()).commit();
 //        }
 //        setupActionBar();
-        sharedPreferences=getSharedPreferences("MyPrefs", 0);
+        sharedPreferences=getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         context=getApplicationContext();
+//        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
 
 
     }
@@ -138,7 +139,7 @@ public class SettingsActivity extends PreferenceActivity {
     private void setupSimplePreferencesScreen() {
         addPreferencesFromResource(R.xml.pref_settings_screen);
         Preference camera_name_list_pref = findPreference("camera_name_list");
-        camera_name_list_pref.setTitle(getResources().getStringArray(R.array.pref_camera_name_titles)[0]);
+        camera_name_list_pref.setTitle(sharedPreferences.getString(AppConstants.cameraName,getResources().getStringArray(R.array.pref_camera_name_titles)[0]));
 
 
         Preference notification_freq_list_pref = findPreference("notification_frequency_list");

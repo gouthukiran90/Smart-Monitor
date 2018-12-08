@@ -20,6 +20,7 @@
             android:title="Add Camera" />
         <item
             android:id="@+id/nav_help"
+            android:visible="false"
             android:icon="@drawable/ic_help_outline_black_24dp"
             android:title="Help" />
     </group>

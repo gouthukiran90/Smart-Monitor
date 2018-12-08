@@ -6,4 +6,5 @@ public class AppConstants {
     static final String username = "usename";
     static final String cameraName = "cameraName";
     static final String scheduleListPref="scheduleListPref";
+    static final String isJustLoggedIn = "isJustLoggedIn";
 }

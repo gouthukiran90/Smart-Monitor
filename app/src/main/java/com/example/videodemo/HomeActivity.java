@@ -8,6 +8,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
@@ -58,7 +59,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class HomeActivity extends BaseActivity
-        implements NavigationView.OnNavigationItemSelectedListener, View.OnTouchListener {
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnTouchListener, MediaPlayer.OnCompletionListener,MediaPlayer.OnPreparedListener {
 
     public static final int TIMER_FREQUENCY = 3000;
     public static final int TIMER_DELAY = 1500;
@@ -70,7 +71,7 @@ public class HomeActivity extends BaseActivity
     private VideoFrameListAdapter videoFrameListAdapter;
     private RecyclerView recyclerView;
     private Timer timer, timerforVideoTime;
-    private SettingsReceiver settingsReceiver;
+//    private SettingsReceiver settingsReceiver;
     private NavigationView navigationView;
     //    private int videoDuration;
     ArrayList<String> labelNamesArray = new ArrayList<>();
@@ -105,67 +106,40 @@ public class HomeActivity extends BaseActivity
         toggle.syncState();
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.getMenu().getItem(0).setTitle(sharedPreferences.getString(AppConstants.cameraName, getResources().getStringArray(R.array.pref_camera_name_titles)[0]));
-        navigationView.setNavigationItemSelectedListener(this);
-        getSupportActionBar().setTitle(sharedPreferences.getString(AppConstants.cameraName, getResources().getStringArray(R.array.pref_camera_name_titles)[0]));
         View navHeader = navigationView.getHeaderView(0);
-        ((TextView) navHeader.findViewById(R.id.nav_header_username)).setText(getIntent().getStringExtra("username"));
-
+        ((TextView) navHeader.findViewById(R.id.nav_header_username)).setText(getIntent().getStringExtra(AppConstants.username));
+        videoViewContainer = findViewById(R.id.videoViewContainer);
+        videoView = findViewById(R.id.videoView);
         recyclerView = findViewById(R.id.recyclerViewForVideoFrames);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recyclerView.setHasFixedSize(true);
+        videoUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.videoplay1);
+        navigationView.setNavigationItemSelectedListener(this);
 
-        videoViewContainer = findViewById(R.id.videoViewContainer);
-        videoView = findViewById(R.id.videoView);
-        videoUri =
-                Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.videoplay1);
 
-        videoView.setVideoURI(videoUri);
-        videoView.start();
+        if (getIntent().hasExtra(AppConstants.isJustLoggedIn)){  // if just logged in then select the camera you want and video starts playing
+            navigationView.getMenu().getItem(0).setVisible(false);
+            videoView.setVisibility(View.GONE);
+            getSupportActionBar().setTitle("Welcome");
+            addCamera(true);
+        }else{ // if its you are auto logging in u will see video play with already selected camera name
+            navigationView.getMenu().getItem(0).setTitle(sharedPreferences.getString(AppConstants.cameraName, getResources().getStringArray(R.array.pref_camera_name_titles)[0]));
+            getSupportActionBar().setTitle(sharedPreferences.getString(AppConstants.cameraName, getResources().getStringArray(R.array.pref_camera_name_titles)[0]));
+            videoView.setVideoURI(videoUri);
+            videoView.start();
+            videoView.setOnCompletionListener(this);
+            videoView.setOnPreparedListener(this);
+//        requestVideoOperations("us-east1.4376173645167851840");
+            requestVideoOperations("us-east1.10672988782954355580"); //from gowthami's api key
+        }
+
 //        mediaController.show(5000);
 //        if(mediaController.isShowing()){
 //            mediaController.hide();
 //        }
 
 //        mediaController.setPrevNextListeners(null, null);
-        videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-                videoView.setVideoURI(videoUri);
-                videoView.start();
-                videoView.setMediaController(mediaController);
-                mediaController.setAnchorView(videoViewContainer);
-                mediaController.setMediaPlayer(videoView);
-                mediaController.hide();
-                videoMotionDataArrayList.clear();
-                videoFrameListAdapter.notifyDataSetChanged();
 
-            }
-        });
-
-
-        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mediaPlayer) {
-//                boolean running = true;
-//                videoDuration = videoView.getDuration();
-
-
-                mediaPlayer.setOnVideoSizeChangedListener(new MediaPlayer.OnVideoSizeChangedListener() {
-                    @Override
-                    public void onVideoSizeChanged(MediaPlayer mediaPlayer, int i, int i1) {
-                        mediaController = new MediaController(HomeActivity.this);
-                        videoView.setMediaController(mediaController);
-                        mediaController.setAnchorView(videoViewContainer);
-                        mediaController.setMediaPlayer(videoView);
-                        mediaController.show();
-                        videoView.setPlayPauseListener(playPauseListener);
-
-//                        mediaController.setOnTouchListener(onMediaControllerTouchListener);
-                    }
-                });
-            }
-        });
 
 
         videoView.setOnTouchListener(this);
@@ -175,6 +149,7 @@ public class HomeActivity extends BaseActivity
 //        prepareVideoFrameListData();
 
 
+        //logout functionality
         findViewById(R.id.logout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -201,21 +176,13 @@ public class HomeActivity extends BaseActivity
 //        }
 
 
-        settingsReceiver = new SettingsReceiver();
+//        settingsReceiver = new SettingsReceiver();
 //        timer = new Timer();
 //        timer.schedule(timerTask, 10000, 5000);
 
 //        analyzeVideo();
-        requestVideoOperations("us-east1.12810406038676860697");
     }
 
-
-//    TimerTask timerTask = new TimerTask() {
-//        @Override
-//        public void run() {
-//            sendFrameChanges();
-//        }
-//    };
 
     TimerTask timerTaskForVideoCurrentTime = new TimerTask() {
         @Override
@@ -232,14 +199,7 @@ public class HomeActivity extends BaseActivity
      * sends notification about scene changes in a video frame and also updates the frame change list in UI
      */
     void sendFrameChanges(int videoRunningPosition) {
-//        counter++;
-//        if (counter > 6) {
-//            if (timer != null) {
-//                timer.cancel();
-//                timer = null;
-//            }
-//            return;
-//        }
+
         Log.d("sendframes ", "entered");
         final VideoMotionData videoMotionData = new VideoMotionData(R.drawable.pic_2, videoRunningPosition < 47 ? "Scene change normal" : "Suspected Harmful activity", videoRunningPosition, "6:10 pm");
 
@@ -318,8 +278,8 @@ public class HomeActivity extends BaseActivity
     @Override
     protected void onStart() {
         super.onStart();
-        IntentFilter intentFilter = new IntentFilter("SETTINGS_CHANGED");
-        LocalBroadcastManager.getInstance(this).registerReceiver(settingsReceiver, intentFilter);
+//        IntentFilter intentFilter = new IntentFilter("SETTINGS_CHANGED");
+//        LocalBroadcastManager.getInstance(this).registerReceiver(settingsReceiver, intentFilter);
     }
 
     @Override
@@ -345,12 +305,12 @@ public class HomeActivity extends BaseActivity
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(settingsReceiver);
+//        LocalBroadcastManager.getInstance(this).unregisterReceiver(settingsReceiver);
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -391,26 +351,7 @@ public class HomeActivity extends BaseActivity
             getSupportActionBar().setTitle(sharedPreferences.getString(AppConstants.cameraName, getResources().getStringArray(R.array.pref_camera_name_titles)[0]));
             // Handle the camera action
         } else if (id == R.id.nav_add_camera) {
-            final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-            LayoutInflater inflater = this.getLayoutInflater();
-            final View dialogView = inflater.inflate(R.layout.layout_add_camera, null);
-            alertDialogBuilder.setView(dialogView);
-            alertDialogBuilder.setCancelable(false);
-            RadioGroup radioGroup = dialogView.findViewById(R.id.radioGrpToAdCamera);
-            final AlertDialog alertDialog1 = alertDialogBuilder.show();
-            radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                    alertDialog1.dismiss();
-                    String addedCameraName = ((RadioButton) dialogView.findViewById(radioGroup.getCheckedRadioButtonId())).getText().toString();
-                    Toast.makeText(HomeActivity.this, "A Camera added at " + addedCameraName + " to monitor", Toast.LENGTH_SHORT).show();
-                    getSupportActionBar().setTitle(addedCameraName);
-                    navigationView.getMenu().add(R.id.camera_group, navigationView.getMenu().size() + 1, Menu.NONE, addedCameraName)
-                            .setIcon(R.drawable.ic_menu_camera);
-                }
-            });
-
-
+            addCamera(false);
         } else if (id == R.id.nav_help) {
 
         }
@@ -419,6 +360,7 @@ public class HomeActivity extends BaseActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 
 
     @Override
@@ -434,17 +376,90 @@ public class HomeActivity extends BaseActivity
 //    void prepareVideoFrameListData() {
 //        videoMotionDataArrayList = new ArrayList<>();
 //        videoMotionDataArrayList.add(new VideoMotionData(R.drawable.pic_1, "Motion Detected", "2 sec", "6:10 pm"));
-//        videoMotionDataArrayList.add(new VideoMotionData(R.drawable.pic_2, "Motion Detected", "1 sec", "6:10 pm"));
+//       videoMotionDataArrayList.add(new VideoMotionData(R.drawable.pic_2, "Motion Detected", "1 sec", "6:10 pm"));
 //    }
 
+    void addCamera(final boolean isFirstCamera){
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.layout_add_camera, null);
+        alertDialogBuilder.setView(dialogView);
+        alertDialogBuilder.setCancelable(false);
+        RadioGroup radioGroup = dialogView.findViewById(R.id.radioGrpToAdCamera);
+        final AlertDialog alertDialog1 = alertDialogBuilder.show();
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                alertDialog1.dismiss();
+                String addedCameraName = ((RadioButton) dialogView.findViewById(radioGroup.getCheckedRadioButtonId())).getText().toString();
+                getSupportActionBar().setTitle(addedCameraName);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString(AppConstants.cameraName,addedCameraName);
+                editor.commit();
+                Toast.makeText(HomeActivity.this, "A Camera added at " + sharedPreferences.getString(AppConstants.cameraName,"default") + " to monitor", Toast.LENGTH_SHORT).show();
+                if (isFirstCamera) {
+                    videoView.setVisibility(View.VISIBLE);
+                    navigationView.getMenu().getItem(0).setVisible(true);
+                    navigationView.getMenu().getItem(0).setTitle(addedCameraName);
+                    videoView.setVideoURI(videoUri);
+                    videoView.start();
 
-    public class SettingsReceiver extends BroadcastReceiver {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            getSupportActionBar().setTitle(sharedPreferences.getString(AppConstants.cameraName, getResources().getStringArray(R.array.pref_camera_name_titles)[0]));
-            navigationView.getMenu().getItem(0).setTitle(sharedPreferences.getString(AppConstants.cameraName, getResources().getStringArray(R.array.pref_camera_name_titles)[0]));
-        }
+                    videoView.setOnCompletionListener(HomeActivity.this);
+                    videoView.setOnPreparedListener(HomeActivity.this);
+//        requestVideoOperations("us-east1.4376173645167851840");
+                    requestVideoOperations("us-east1.10672988782954355580"); //from gowthami's api key
+                } else{
+                    navigationView.getMenu().add(R.id.camera_group, navigationView.getMenu().size() + 1, Menu.NONE, addedCameraName)
+                        .setIcon(R.drawable.ic_menu_camera);
+                    videoView.setVideoURI(videoUri);
+                    videoView.start();
+                    mediaController.hide();
+                    videoMotionDataArrayList.clear();
+                    videoFrameListAdapter.notifyDataSetChanged();
+            }
+            }
+        });
     }
+
+    @Override
+    public void onCompletion(MediaPlayer mediaPlayer) {
+        videoView.setVideoURI(videoUri);
+        videoView.start();
+        videoView.setMediaController(mediaController);
+        mediaController.setAnchorView(videoViewContainer);
+        mediaController.setMediaPlayer(videoView);
+        mediaController.hide();
+        videoMotionDataArrayList.clear();
+        videoFrameListAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onPrepared(MediaPlayer mediaPlayer) {
+        mediaPlayer.setOnVideoSizeChangedListener(new MediaPlayer.OnVideoSizeChangedListener() {
+            @Override
+            public void onVideoSizeChanged(MediaPlayer mediaPlayer, int i, int i1) {
+                mediaController = new MediaController(HomeActivity.this);
+                videoView.setMediaController(mediaController);
+                mediaController.setAnchorView(videoViewContainer);
+                mediaController.setMediaPlayer(videoView);
+                mediaController.show();
+                videoView.setPlayPauseListener(playPauseListener);
+
+//                        mediaController.setOnTouchListener(onMediaControllerTouchListener);
+            }
+        });
+    }
+
+    /**
+     * receiver that handles toolbar and camera name title updation at menu after selecting new camera or after login
+     */
+//    public class SettingsReceiver extends BroadcastReceiver {
+//        @Override
+//        public void onReceive(Context context, Intent intent) {
+//            getSupportActionBar().setTitle(sharedPreferences.getString(AppConstants.cameraName, getResources().getStringArray(R.array.pref_camera_name_titles)[0]));
+//            navigationView.getMenu().getItem(0).setTitle(sharedPreferences.getString(AppConstants.cameraName, getResources().getStringArray(R.array.pref_camera_name_titles)[0]));
+//        }
+//    }
 
     void analyzeVideo() {
 
@@ -480,6 +495,10 @@ public class HomeActivity extends BaseActivity
     }
 
 
+    /**
+     * fetched video labels and scene changes contacting Cloud intelligence API
+     * @param videoCode
+     */
     void requestVideoOperations(String videoCode) {
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, getString(R.string.google_video_operations_api, videoCode, getString(R.string.google_cloud_api_key)), new Response.Listener<String>() {

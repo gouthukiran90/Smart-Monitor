@@ -1,5 +1,6 @@
 package com.example.videodemo
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
@@ -7,6 +8,7 @@ import android.text.TextUtils
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -108,8 +110,13 @@ class LoginActivity : BaseActivity() {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
 //            showProgress(true)
+            val imm = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
+            imm.hideSoftInputFromInputMethod(currentFocus!!.windowToken, 0)
+
             var intentToHome = Intent(this, HomeActivity::class.java)
-            intentToHome.putExtra("username", emailStr)
+            intentToHome.putExtra(AppConstants.username, emailStr)
+            intentToHome.putExtra(AppConstants.isJustLoggedIn,true)
             startActivity(intentToHome)
             finish()
             var editor = sharedPreferences.edit()

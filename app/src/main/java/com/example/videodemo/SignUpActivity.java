@@ -229,12 +229,14 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
                                                 @Override
                                                 public void onAnimationEnd() {
                                                     Intent intent=new Intent(SignUpActivity.this, HomeActivity.class);
-                                                    intent.putExtra("username", etEmail.getText().toString());
+                                                    intent.putExtra(AppConstants.username, etEmail.getText().toString());
+                                                    intent.putExtra(AppConstants.isJustLoggedIn,true);
                                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                                                     startActivity(intent);
                                                     SharedPreferences.Editor editor=sharedPreferences.edit();
                                                     editor.putString(AppConstants.username,etEmail.getText().toString());
                                                     editor.putBoolean(AppConstants.isLoggedIn,true);
+                                                    editor.commit();
                                                     finish();
                                                 }
                                             });

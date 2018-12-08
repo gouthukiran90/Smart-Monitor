@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
@@ -24,7 +25,8 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        sharedPreferences = getSharedPreferences("MyPrefs", 0);
+        sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+//        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
     }
 
     public void showSnackBar(String msg, int color,View mCoordinatorLayout) {
